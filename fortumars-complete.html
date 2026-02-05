@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FortuMars - Transforming Business Through Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           FORTUMARS - MODERN RESPONSIVE DESIGN
+           ============================================ */
+
+        /* === CSS VARIABLES === */
+        :root {
+            /* Colors - Bold, distinctive palette */
+            --primary-color: #FF6B35;
+            --primary-dark: #E55A28;
+            --primary-light: #FF8C5F;
+            --secondary-color: #004E89;
+            --secondary-dark: #003A66;
+            --accent-color: #F7B801;
+            --accent-dark: #D69F00;
+            
+            /* Neutrals */
+            --bg-primary: #0A0E27;
+            --bg-secondary: #151B3D;
+            --bg-card: #1E2749;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B4C5E4;
+            --text-muted: #7B8FB5;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            --gradient-secondary: linear-gradient(135deg, #004E89 0%, #1A7FA0 100%);
+            --gradient-dark: linear-gradient(180deg, #0A0E27 0%, #151B3D 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.35);
+            --shadow-glow: 0 0 30px rgba(255, 107, 53, 0.3);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Typography */
+            --font-primary: 'Sora', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.4s ease;
+            --transition-slow: 0.6s ease;
+        }
+
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        /* === NAVIGATION === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-medium);
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 14, 39, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-signin {
+            padding: 0.6rem 1.5rem;
+            background: var(--gradient-primary);
+            border-radius: 50px;
+            color: white !important;
+        }
+
+        .btn-signin::after {
+            display: none;
+        }
+
+        .btn-signin:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: var(--transition-fast);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: var(--transition-medium);
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 107, 53, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 53, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 107, 53, 0.15), transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(0, 78, 137, 0.15), transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .title-line {
+            display: block;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .title-line:nth-child(1) { animation-delay: 0.2s; }
+        .title-line:nth-child(2) { animation-delay: 0.4s; }
+        .title-line:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease 1s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-medium);
+            font-family: var(--font-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .btn-large {
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            animation: fadeInUp 0.8s ease 1.2s backwards;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-mono);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-mono);
+            animation: fadeInUp 0.8s ease 1.4s backwards;
+        }
+
+        .scroll-arrow {
+            width: 2px;
+            height: 40px;
+            background: var(--gradient-primary);
+            animation: scrollDown 2s ease infinite;
+        }
+
+        @keyframes scrollDown {
+            0%, 100% { opacity: 0; transform: translateY(-10px); }
+            50% { opacity: 1; transform: translateY(10px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+                padding-top: 100px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* === SERVICES SECTION === */
+        .services {
+            padding: var(--spacing-xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-mono);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-medium);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: var(--transition-medium);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-medium);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .service-learn-more {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-family: var(--font-primary);
+        }
+
+        .service-learn-more:hover {
+            border-color: var(--primary-color);
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* === CLIENTS SECTION === */
+        .clients {
+            padding: var(--spacing-xl) 0;
+            background: var(--bg-primary);
+        }
+
+        .clients-showcase {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .client-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .client-stat-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-medium);
+        }
+
+        .client-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.3rem;
+            margin: 1rem 0;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 1.5rem;
+        }
+
+        .star.half {
+            background: linear-gradient(90deg, #FFD700 50%, #444 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reviews-count {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-medium);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .testimonial-author strong {
+            color: var(--text-primary);
+        }
+
+        .testimonial-author span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .client-stats,
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === ABOUT SECTION === */
+        .about {
+            padding: var(--spacing-xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 2rem 0;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .about-visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .visual-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-medium);
+        }
+
+        .visual-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .visual-card h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-card p {
+            color: var(--text-muted);
+        }
+
+        .visual-card:nth-child(3) {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-visual {
+                grid-template-columns: 1fr;
+            }
+            
+            .visual-card:nth-child(3) {
+                grid-column: auto;
+            }
+        }
+
+        /* === CONTACT SECTION === */
+        .contact {
+            padding: var(--spacing-xl) 0;
+            background: var(--bg-primary);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contact-form-wrapper {
+            text-align: center;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+        }
+
+        .footer-links,
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            color: var(--text-muted);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* === MODAL === */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        /* Service Details */
+        #serviceDetails h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #serviceDetails p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        #serviceDetails ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        #serviceDetails li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        #serviceDetails li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .service-cta {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Forms */
+        .booking-form-container h2,
+        .signin-container h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-label input {
+            width: auto;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .signin-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .signin-footer p {
+            color: var(--text-muted);
+        }
+
+        .signin-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signin-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .modal {
+                padding: 1rem;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        /* === SCROLLBAR === */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .loading {
+            animation: pulse 1.5s ease infinite;
+        }
+
+        /* === UTILITY CLASSES === */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-text">FortuMars</span>
+                    <span class="logo-tagline">Innovation Hub</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#clients" class="nav-link">Clients</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#signin" class="nav-link btn-signin">Sign In</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-grid"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Your Business</span>
+                    <span class="title-line">Evolution</span>
+                    <span class="title-line highlight">Starts Here</span>
+                </h1>
+                <p class="hero-description">
+                    Comprehensive digital solutions powered by innovation, driven by excellence. 
+                    Transform your enterprise with our cutting-edge technology ecosystem.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="scrollToSection('services')">Explore Services</button>
+                    <button class="btn btn-secondary" onclick="openBookingModal()">Book Consultation</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-label">Clients Served</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="98">0</span>
+                        <span class="stat-label">Success Rate %</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="4.9">0</span>
+                        <span class="stat-label">Google Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Enterprise Solutions Suite</h2>
+                <p class="section-description">Comprehensive digital transformation services tailored for your business success</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- HRM -->
+                <div class="service-card" data-service="hrm">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">HRM</h3>
+                    <p class="service-subtitle">Human Resource Management</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- LMS -->
+                <div class="service-card" data-service="lms">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">LMS</h3>
+                    <p class="service-subtitle">Learning Management System</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- ERP -->
+                <div class="service-card" data-service="erp">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">ERP</h3>
+                    <p class="service-subtitle">Enterprise Resource Planning</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- CRM -->
+                <div class="service-card" data-service="crm">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">CRM</h3>
+                    <p class="service-subtitle">Customer Relationship Management</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- HR IT Requirement -->
+                <div class="service-card" data-service="hr-it">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">HR IT Requirement</h3>
+                    <p class="service-subtitle">Talent Acquisition & Staffing</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="service-card" data-service="digital-marketing">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Digital Marketing</h3>
+                    <p class="service-subtitle">Growth & Online Presence</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- Branding & Identity -->
+                <div class="service-card" data-service="branding">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Branding & Identity</h3>
+                    <p class="service-subtitle">Brand Strategy & Design</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+
+                <!-- IT Training & Internship -->
+                <div class="service-card" data-service="training">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">IT Training & Internship</h3>
+                    <p class="service-subtitle">Skill Development Programs</p>
+                    <button class="service-learn-more">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Trusted By Leaders</span>
+                <h2 class="section-title">Our Clients & Ratings</h2>
+            </div>
+
+            <div class="clients-showcase">
+                <div class="client-stats">
+                    <div class="client-stat-card">
+                        <div class="stat-icon">★</div>
+                        <h3 class="stat-value">4.9/5.0</h3>
+                        <p class="stat-description">Google Rating</p>
+                        <div class="star-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star half">★</span>
+                        </div>
+                        <p class="reviews-count">Based on 487 reviews</p>
+                    </div>
+                    <div class="client-stat-card">
+                        <div class="stat-icon">👥</div>
+                        <h3 class="stat-value">500+</h3>
+                        <p class="stat-description">Satisfied Clients</p>
+                        <p class="reviews-count">Across 25 industries</p>
+                    </div>
+                    <div class="client-stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <h3 class="stat-value">98%</h3>
+                        <p class="stat-description">Client Retention</p>
+                        <p class="reviews-count">Long-term partnerships</p>
+                    </div>
+                </div>
+
+                <div class="testimonials">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"FortuMars transformed our HR operations completely. Their HRM solution increased our efficiency by 60% within the first quarter."</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah Johnson</strong>
+                            <span>CEO, TechCorp Industries</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The ERP implementation was seamless. FortuMars team's expertise and support made all the difference in our digital transformation journey."</p>
+                        <div class="testimonial-author">
+                            <strong>Michael Chen</strong>
+                            <span>Operations Director, Global Manufacturing Co.</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Their digital marketing strategies doubled our online presence. ROI exceeded expectations by 180%. Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            <strong>Priya Sharma</strong>
+                            <span>Marketing Head, Innovate Solutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-tag">About FortuMars</span>
+                    <h2 class="section-title">Pioneering Digital Excellence</h2>
+                    <p class="about-description">
+                        At FortuMars, we don't just build software – we craft transformative digital experiences. 
+                        With a decade of innovation, we've helped over 500 businesses achieve their digital ambitions.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h4>Innovation First</h4>
+                                <p>Cutting-edge solutions using latest technologies</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h4>Client-Centric</h4>
+                                <p>Your success is our priority, always</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h4>Proven Track Record</h4>
+                                <p>98% client retention speaks for itself</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="visual-card">
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="visual-card">
+                        <h3>25+</h3>
+                        <p>Industries Served</p>
+                    </div>
+                    <div class="visual-card">
+                        <h3>1000+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Ready to Transform Your Business?</h2>
+                <p class="section-description">Let's discuss how FortuMars can help you achieve your goals</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <button class="btn btn-primary btn-large" onclick="openBookingModal()">Book Consultation Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FortuMars</h3>
+                    <p>Transforming businesses through innovative digital solutions</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#services">Services</a>
+                    <a href="#clients">Clients</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@fortumars.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FortuMars. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Detail Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="serviceDetails"></div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-overlay" onclick="closeBookingModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            <div class="booking-form-container">
+                <h2>Book Your Consultation</h2>
+                <p class="form-subtitle">Fill in your details and we'll get back to you within 24 hours</p>
+                <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" placeholder="Your Company">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="hrm">HRM - Human Resource Management</option>
+                            <option value="lms">LMS - Learning Management System</option>
+                            <option value="erp">ERP - Enterprise Resource Planning</option>
+                            <option value="crm">CRM - Customer Relationship Management</option>
+                            <option value="hr-it">HR IT Requirement</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="branding">Branding & Identity</option>
+                            <option value="training">IT Training & Internship</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signinModal">
+        <div class="modal-overlay" onclick="closeSignInModal()"></div>
+        <div class="modal-content modal-signin">
+            <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+            <div class="signin-container">
+                <h2>Welcome Back</h2>
+                <p class="form-subtitle">Sign in to access your FortuMars account</p>
+                <form id="signinForm" onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label for="signinEmail">Email Address</label>
+                        <input type="email" id="signinEmail" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signinPassword">Password</label>
+                        <input type="password" id="signinPassword" name="password" required placeholder="Enter your password">
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                </form>
+                <div class="signin-footer">
+                    <p>Don't have an account? <a href="#" onclick="openSignUpModal()">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // FORTUMARS - INTERACTIVE JAVASCRIPT
+        // ============================================
+
+        // === Service Information Database ===
+        const serviceData = {
+            hrm: {
+                title: "Human Resource Management (HRM)",
+                description: "Transform your HR operations with our comprehensive HRM solution. Streamline recruitment, onboarding, payroll, performance management, and employee engagement all in one powerful platform.",
+                features: [
+                    "Employee Database Management - Centralized employee information system",
+                    "Recruitment & Onboarding - Automated hiring workflows and digital onboarding",
+                    "Payroll Processing - Automated salary calculations, tax compliance, and payslips",
+                    "Leave & Attendance - Digital leave requests and biometric attendance integration",
+                    "Performance Management - 360-degree feedback and KPI tracking",
+                    "Training & Development - Learning paths and skill assessment tools",
+                    "Employee Self-Service Portal - Empowering employees with direct access",
+                    "Analytics & Reports - Data-driven insights for better HR decisions"
+                ],
+                benefits: "Reduce HR administrative time by 60%, improve employee satisfaction by 45%, and ensure 100% compliance with labor regulations."
+            },
+            lms: {
+                title: "Learning Management System (LMS)",
+                description: "Revolutionize your organization's learning and development with our cutting-edge LMS platform. Create, deliver, and track training programs efficiently.",
+                features: [
+                    "Course Creation & Management - Intuitive course builder with multimedia support",
+                    "Content Library - Centralized repository for all learning materials",
+                    "Interactive Learning - Quizzes, assignments, and gamification features",
+                    "Virtual Classrooms - Live sessions with video conferencing integration",
+                    "Progress Tracking - Real-time monitoring of learner progress and completion",
+                    "Certification Management - Automated certificate generation and tracking",
+                    "Mobile Learning - Learn anywhere, anytime on any device",
+                    "Advanced Analytics - Comprehensive reporting on learning effectiveness",
+                    "Integration Capabilities - Seamless integration with HRMS and other systems"
+                ],
+                benefits: "Increase training efficiency by 70%, reduce training costs by 50%, and improve knowledge retention by 65%."
+            },
+            erp: {
+                title: "Enterprise Resource Planning (ERP)",
+                description: "Unify your entire business operations with our comprehensive ERP solution. Integrate finance, supply chain, manufacturing, and operations in one seamless platform.",
+                features: [
+                    "Financial Management - Accounting, budgeting, and financial reporting",
+                    "Supply Chain Management - Procurement, inventory, and logistics optimization",
+                    "Manufacturing Management - Production planning and quality control",
+                    "Sales & Distribution - Order management and customer fulfillment",
+                    "Project Management - Resource allocation and project tracking",
+                    "Business Intelligence - Real-time dashboards and predictive analytics",
+                    "Multi-location Support - Manage operations across multiple locations",
+                    "Compliance & Audit - Regulatory compliance and audit trail management",
+                    "Integration Hub - Connect with existing systems and third-party apps"
+                ],
+                benefits: "Reduce operational costs by 30%, improve productivity by 50%, and gain real-time visibility across your entire organization."
+            },
+            crm: {
+                title: "Customer Relationship Management (CRM)",
+                description: "Build stronger customer relationships and drive sales growth with our intelligent CRM platform. Manage leads, track opportunities, and deliver exceptional customer experiences.",
+                features: [
+                    "Lead & Contact Management - 360-degree customer view and interaction history",
+                    "Sales Pipeline Management - Visual pipeline with drag-and-drop functionality",
+                    "Marketing Automation - Email campaigns, lead nurturing, and segmentation",
+                    "Customer Support - Ticketing system and case management",
+                    "Sales Forecasting - AI-powered predictions and revenue insights",
+                    "Mobile CRM - Access customer data on-the-go",
+                    "Integration - Connect with email, calendar, and communication tools",
+                    "Custom Workflows - Automate repetitive tasks and approvals",
+                    "Reporting & Analytics - Customizable dashboards and reports"
+                ],
+                benefits: "Increase sales revenue by 40%, improve customer retention by 35%, and reduce sales cycle time by 25%."
+            },
+            "hr-it": {
+                title: "HR IT Requirement Solutions",
+                description: "Bridge the gap between your business needs and top IT talent. Our comprehensive talent acquisition and staffing services help you build high-performing tech teams.",
+                features: [
+                    "IT Talent Sourcing - Access to pre-vetted IT professionals across all technologies",
+                    "Contract Staffing - Flexible hiring for project-based requirements",
+                    "Permanent Placement - End-to-end recruitment for full-time positions",
+                    "Team Augmentation - Scale your teams quickly with skilled professionals",
+                    "Technical Assessment - Rigorous evaluation of technical competencies",
+                    "Onboarding Support - Smooth integration of new hires into your team",
+                    "Talent Management - Ongoing performance tracking and support",
+                    "Market Insights - Salary benchmarking and hiring trends analysis"
+                ],
+                benefits: "Reduce time-to-hire by 50%, improve quality of hire by 60%, and save up to 40% on recruitment costs."
+            },
+            "digital-marketing": {
+                title: "Digital Marketing Services",
+                description: "Accelerate your online growth with data-driven digital marketing strategies. From SEO to social media, we help you reach and engage your target audience effectively.",
+                features: [
+                    "Search Engine Optimization (SEO) - Improve organic search rankings and visibility",
+                    "Pay-Per-Click Advertising (PPC) - Targeted ad campaigns on Google and social media",
+                    "Social Media Marketing - Build and engage communities across all platforms",
+                    "Content Marketing - Strategic content creation and distribution",
+                    "Email Marketing - Automated campaigns with personalization",
+                    "Conversion Rate Optimization - Improve website performance and conversions",
+                    "Analytics & Reporting - Track ROI and campaign performance",
+                    "Marketing Automation - Streamline and automate marketing workflows",
+                    "Influencer Marketing - Leverage influencer partnerships for brand growth"
+                ],
+                benefits: "Increase website traffic by 200%, improve lead generation by 150%, and achieve 5x return on marketing investment."
+            },
+            branding: {
+                title: "Branding & Identity Services",
+                description: "Create a memorable brand that resonates with your audience. Our comprehensive branding services help you stand out in a crowded marketplace.",
+                features: [
+                    "Brand Strategy - Define your brand positioning and value proposition",
+                    "Logo & Visual Identity - Professional logo design and brand guidelines",
+                    "Brand Messaging - Compelling taglines and brand storytelling",
+                    "Website Design - Responsive, user-friendly website development",
+                    "Marketing Collateral - Business cards, brochures, and presentation design",
+                    "Social Media Branding - Consistent visual identity across all platforms",
+                    "Packaging Design - Product packaging that sells",
+                    "Brand Guidelines - Comprehensive documentation for consistent brand use",
+                    "Rebranding Services - Refresh and modernize existing brands"
+                ],
+                benefits: "Increase brand recognition by 80%, improve customer trust by 60%, and differentiate from competitors effectively."
+            },
+            training: {
+                title: "IT Training & Internship Programs",
+                description: "Empower your career or team with industry-relevant IT training and hands-on internship opportunities. Learn from experts and gain practical experience.",
+                features: [
+                    "Technical Training - Full-stack development, cloud computing, data science, and more",
+                    "Certification Programs - Industry-recognized certifications and exam preparation",
+                    "Hands-on Projects - Real-world projects and case studies",
+                    "Mentorship Programs - One-on-one guidance from industry experts",
+                    "Internship Opportunities - 3-6 month internships with leading companies",
+                    "Job Placement Support - Resume building, interview prep, and job referrals",
+                    "Flexible Learning - Online, offline, and hybrid training options",
+                    "Corporate Training - Customized training programs for organizations",
+                    "Continuous Learning - Access to updated content and emerging technologies"
+                ],
+                benefits: "85% placement rate, average salary increase of 120% post-training, and 1000+ students successfully trained and placed."
+            }
+        };
+
+        // === DOM Elements ===
+        const navbar = document.getElementById('navbar');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const serviceModal = document.getElementById('serviceModal');
+        const bookingModal = document.getElementById('bookingModal');
+        const signinModal = document.getElementById('signinModal');
+
+        // === Mobile Menu Toggle ===
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+
+        // === Navbar Scroll Effect ===
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // === Animated Counter for Stats ===
+        function animateCounter(element) {
+            const target = parseFloat(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    if (target % 1 !== 0) {
+                        element.textContent = current.toFixed(1);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    if (target % 1 !== 0) {
+                        element.textContent = target.toFixed(1);
+                    } else {
+                        element.textContent = target;
+                    }
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Intersection Observer for counters
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        statNumbers.forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // === Service Cards Click Handler ===
+        serviceCards.forEach(card => {
+            const learnMoreBtn = card.querySelector('.service-learn-more');
+            learnMoreBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const serviceType = card.getAttribute('data-service');
+                showServiceDetails(serviceType);
+            });
+            
+            card.addEventListener('click', () => {
+                const serviceType = card.getAttribute('data-service');
+                showServiceDetails(serviceType);
+            });
+        });
+
+        // === Show Service Details in Modal ===
+        function showServiceDetails(serviceType) {
+            const service = serviceData[serviceType];
+            if (!service) return;
+
+            const detailsHTML = `
+                <div class="service-detail-content">
+                    <h2>${service.title}</h2>
+                    <p>${service.description}</p>
+                    
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary-color);">Key Features</h3>
+                    <ul>
+                        ${service.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    
+                    <div style="background: rgba(255, 107, 53, 0.1); padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid var(--primary-color);">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-color);">Benefits</h4>
+                        <p style="margin: 0;">${service.benefits}</p>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <button class="btn btn-primary" onclick="openBookingModal(); closeModal();">Book This Service</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('serviceDetails').innerHTML = detailsHTML;
+            serviceModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // === Modal Functions ===
+        function closeModal() {
+            serviceModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openBookingModal() {
+            bookingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openSignInModal() {
+            closeBookingModal();
+            signinModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSignInModal() {
+            signinModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openSignUpModal() {
+            alert('Sign up functionality will redirect to your registration page. This is a demo.');
+        }
+
+        // Sign in link click handler
+        document.querySelector('.btn-signin').addEventListener('click', (e) => {
+            e.preventDefault();
+            openSignInModal();
+        });
+
+        // === Form Handlers ===
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            alert(`Thank you, ${data.fullName}! Your consultation request has been submitted. We'll contact you at ${data.email} within 24 hours.`);
+            
+            event.target.reset();
+            closeBookingModal();
+            
+            console.log('Booking Data:', data);
+        }
+
+        function handleSignIn(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            
+            alert(`Welcome back! Signing in as ${email}...`);
+            
+            event.target.reset();
+            closeSignInModal();
+            
+            console.log('Sign In attempt');
+        }
+
+        // === Smooth Scroll Function ===
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const navbarHeight = navbar.offsetHeight;
+                const sectionTop = section.offsetTop - navbarHeight;
+                
+                window.scrollTo({
+                    top: sectionTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // === Close modals on Escape key ===
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeBookingModal();
+                closeSignInModal();
+            }
+        });
+
+        // === Dynamic Year in Footer ===
+        const footerYear = document.querySelector('.footer-bottom p');
+        if (footerYear) {
+            const currentYear = new Date().getFullYear();
+            footerYear.textContent = `© ${currentYear} FortuMars. All rights reserved.`;
+        }
+
+        // === Console Easter Egg ===
+        console.log('%c🚀 FortuMars - Innovation Hub', 'color: #FF6B35; font-size: 20px; font-weight: bold;');
+        console.log('%cBuilt with 💙 by FortuMars Development Team', 'color: #004E89; font-size: 12px;');
+    </script>
+</body>
+</html>
